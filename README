@@ -1,0 +1,16 @@
+=== REFERENCE
+
+    http://blog.chinaunix.net/uid-298861-id-3251139.html
+    http://blog.chinaunix.net/uid-298861-id-3260567.html
+    https://github.com/amardaxini/em-websocket-chat-demo
+
+
+=== REQUIRE
+
+    gem install em-websocket
+
+=== USE
+
+    ruby server.rb
+
+    open client.html by browser

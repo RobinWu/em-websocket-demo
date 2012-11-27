@@ -1,0 +1,38 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+    var socket = new WebSocket('ws://192.168.1.108:8080'); 
+
+    // 打开Socket 
+    socket.onopen = function(event) { 
+        // 发送一个初始化消息
+        socket.send('I am the client and I\'m listening!'); 
+    };
+    // 监听消息
+    socket.onmessage = function(event) { 
+        console.log('Client received a message',event); 
+        $('#console').append(event.data + '<br/>');
+        $('#content').val('').focus();
+
+    }; 
+    // 监听Socket的关闭
+    socket.onclose = function(event) { 
+        console.log('Client notified socket has closed',event); 
+    }; 
+
+    console.info(socket);
+    function send() {
+        socket.send($('#content').val());
+    }
+    function close() {
+        // 关闭Socket.... 
+        socket.close() 
+    }
+</script>
+<body>
+    <div id="console"></div>
+    <input type="text" id="content"/>
+    <input type="button" value="Send" onclick="send()" />
+    <input type="button" value="Close" onclick="close()" />
+</body>
+</html>
